@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "LudumDare41_OrderUp",
+"dataUrl": "LudumDare41_OrderUp.data.unityweb",
+"asmCodeUrl": "LudumDare41_OrderUp.asm.code.unityweb",
+"asmMemoryUrl": "LudumDare41_OrderUp.asm.memory.unityweb",
+"asmFrameworkUrl": "LudumDare41_OrderUp.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
