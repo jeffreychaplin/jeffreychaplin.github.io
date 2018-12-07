@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | SpaceMinerNiner</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css"> 
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/SpaceMinerNiner.json", {onProgress: UnityProgress,
+        Module: {
+          preInit: [function(){
+            this.gameInstance.Module.noInitialRun = true;
+          }],
+          onRuntimeInitialized: function() {
+            const btn = document.createElement('button');
+            btn.classList.add('playButton');
+            btn.textContent = 'PLAY';
+            btn.style.fontSize = '2em';
+            btn.onclick = e => {
+              gameInstance.Module.callMain();
+              btn.remove();
+            };
+            this.gameInstance.container.appendChild(btn);
+          }
+        }
+      });
+	  
+	  function UnityProgress(gameInstance, progress) {
+	    if (!gameInstance.Module)
+		  return;
+	    if (!gameInstance.logo) {
+		  gameInstance.logo = document.createElement("div");
+		  gameInstance.logo.className = "logo " + gameInstance.Module.splashScreenStyle;
+		  gameInstance.container.appendChild(gameInstance.logo);
+	    }
+	    if (!gameInstance.progress) {    
+		  gameInstance.progress = document.createElement("div");
+		  gameInstance.progress.className = "progress " + gameInstance.Module.splashScreenStyle;
+		  gameInstance.progress.empty = document.createElement("div");
+		  gameInstance.progress.empty.className = "empty";
+		  gameInstance.progress.appendChild(gameInstance.progress.empty);
+		  gameInstance.progress.full = document.createElement("div");
+		  gameInstance.progress.full.className = "full";
+		  gameInstance.progress.appendChild(gameInstance.progress.full);
+		  gameInstance.container.appendChild(gameInstance.progress);
+	    }
+	    gameInstance.progress.full.style.width = (100 * progress) + "%";
+	    gameInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
+	    if (progress == 1)
+		  gameInstance.logo.style.display = gameInstance.progress.style.display = "none";
+	  }
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">SpaceMinerNiner</div>
+      </div>
+    </div>
+  </body>
+</html>
