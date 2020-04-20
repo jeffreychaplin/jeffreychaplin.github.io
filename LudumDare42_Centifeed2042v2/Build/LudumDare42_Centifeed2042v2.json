@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "LudumDare42_Centifeed2042",
+"productVersion": "0.1",
+"dataUrl": "LudumDare42_Centifeed2042v2.data.unityweb",
+"wasmCodeUrl": "LudumDare42_Centifeed2042v2.wasm.code.unityweb",
+"wasmFrameworkUrl": "LudumDare42_Centifeed2042v2.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#141414",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.6f1"
+}
