@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "LudumDare46_FlowerHour",
+"productVersion": "0.1",
+"dataUrl": "LudumDate46_FlowerHour.data.unityweb",
+"wasmCodeUrl": "LudumDate46_FlowerHour.wasm.code.unityweb",
+"wasmFrameworkUrl": "LudumDate46_FlowerHour.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.6f1"
+}
