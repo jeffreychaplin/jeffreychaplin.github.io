@@ -5,16 +5,57 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | SpaceMinerNiner</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
+    <link rel="stylesheet" href="TemplateData/style.css"> 
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/SpaceMinerNiner.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/SpaceMinerNiner.json", {onProgress: UnityProgress,
+        Module: {
+          preInit: [function(){
+            this.unityInstance.Module.noInitialRun = true;
+          }],
+          onRuntimeInitialized: function() {
+            const btn = document.createElement('button');
+            btn.classList.add('playButton');
+            btn.textContent = 'PLAY';
+            btn.style.fontSize = '2em';
+            btn.onclick = e => {
+              unityInstance.Module.callMain();
+              btn.remove();
+            };
+            this.unityInstance.container.appendChild(btn);
+          }
+        }
+      });
+	  
+	  function UnityProgress(unityInstance, progress) {
+	    if (!unityInstance.Module)
+		  return;
+	    if (!unityInstance.logo) {
+		  unityInstance.logo = document.createElement("div");
+		  unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
+		  unityInstance.container.appendChild(unityInstance.logo);
+	    }
+	    if (!unityInstance.progress) {    
+		  unityInstance.progress = document.createElement("div");
+		  unityInstance.progress.className = "progress " + unityInstance.Module.splashScreenStyle;
+		  unityInstance.progress.empty = document.createElement("div");
+		  unityInstance.progress.empty.className = "empty";
+		  unityInstance.progress.appendChild(unityInstance.progress.empty);
+		  unityInstance.progress.full = document.createElement("div");
+		  unityInstance.progress.full.className = "full";
+		  unityInstance.progress.appendChild(unityInstance.progress.full);
+		  unityInstance.container.appendChild(unityInstance.progress);
+	    }
+	    unityInstance.progress.full.style.width = (100 * progress) + "%";
+	    unityInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
+	    if (progress == 1)
+		  unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
+	  }
     </script>
   </head>
   <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div id="unityContainer" style="width: 960px; height: 600px; margin: auto"></div>
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
