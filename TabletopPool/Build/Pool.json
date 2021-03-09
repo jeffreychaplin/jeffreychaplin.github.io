@@ -1,0 +1,13 @@
+{
+"companyName": "com.brickisland.billards",
+"productName": "tabletop_pool",
+"dataUrl": "Pool.data.unityweb",
+"asmCodeUrl": "Pool.asm.code.unityweb",
+"asmMemoryUrl": "Pool.asm.memory.unityweb",
+"asmFrameworkUrl": "Pool.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
